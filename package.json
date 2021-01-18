@@ -1,6 +1,6 @@
 {
   "name": "structurizr-ts-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A command line tool to synchronize a local YAML file with a structurizr cloud/on premises application",
   "bin": "main.js",
   "scripts": {

@@ -2,6 +2,7 @@
 import { uploadWorkspaceFromFile } from './upload';
 import { downloadWorkspaceToFile } from './download';
 import { argv0 } from 'process';
+import { version as pkgVersion, name as pkgName} from './package.json';
 
 const main = async (...argv: string[]) => {
   const cfgFileName = argv[2];
@@ -14,6 +15,7 @@ const main = async (...argv: string[]) => {
     await downloadWorkspaceToFile(cfgFileName, yamlFileName);
   } else {
     console.log(argv0);
+    console.log(`${pkgName} v${pkgVersion}`);
     console.log(`Usage: ${argv[0]} ${argv[1]} <cfgFileName> <yamlFileName> <COMMAND>`);
     console.log(`where <COMMAND> is either UPLOAD or DOWNLOAD`);
     process.exit(1);

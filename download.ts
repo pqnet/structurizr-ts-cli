@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'fs';
 
 type ApiConfig = typeof import('./api.json');
 
-import yaml from 'yaml';
+import { stringifySortedById } from './stringify';
 
 const pullWorkspace = (api: ApiConfig): Promise<Workspace> => {
 
@@ -16,6 +16,6 @@ export async function downloadWorkspaceToFile(cfgFileName: string, yamlFileName:
   const api = JSON.parse(cfgFile) as ApiConfig;
   const workspace = await pullWorkspace(api);
   const workspaceDTO = workspace.toDto();
-  const yamlString = yaml.stringify(workspaceDTO);
+  const yamlString = stringifySortedById(workspaceDTO);
   writeFileSync(yamlFileName, yamlString, { encoding: 'utf-8' });
 }
